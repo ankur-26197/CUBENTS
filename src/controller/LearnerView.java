@@ -1,0 +1,73 @@
+package controller;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import datamodel.LastActivity;
+import datamodel.Topic;
+import datastore.DataManager;
+
+/**
+ * @author Akash Singh
+ * 
+ * Servlet to redirect to either learner's view or editor's view
+ */
+@WebServlet("/LearnerView")
+public class LearnerView extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public LearnerView() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		DataManager a=new DataManager();
+		
+		//extracting topic and activity list from database;
+		ArrayList<Topic> topics=a.getTopic();
+		a.close();
+		for(int i=0;i<topics.size();i++)
+		{
+			ArrayList<String> name=topics.get(i).getActivityName();
+			
+			for(int j=0;j<name.size();j++)
+				System.out.println(name.get(j));
+		}
+		
+		
+		
+		request.setAttribute("topics", topics);
+		
+		String url="//"+request.getParameter("url");
+		
+		RequestDispatcher dispatcher=this.getServletContext().getRequestDispatcher(url);
+		
+		dispatcher.forward(request, response);
+		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}
