@@ -1,7 +1,7 @@
 # CUBENTS
 ## Comprehensive Utility Board for EquatioN Text and Shapes
 Summer Internship Project for 2017 under the guidance of our mentor <b>Mr. Avinash Awate</b>,Project Director,IIT BombayX and <b>Mr.Rajnikanth Jangir</b>,Software Developer,IIT Bombay
-# Other Contributors to the project
+# Contributors to the project
 <b>Arun Nainwal</b> - https://github.com/arunnainwal - Graphics Contributor<br>
 <b>Ruchita Parmar</b> - https://github.com/ruchitaparmar - Event Handlers and Hint methods<br>
 <b>Surbhi Inani</b> - https://github.com/SurbhiInani - Graphic Animations and Documentation<br>
